@@ -1,0 +1,19 @@
+!pip install transformers -q
+
+from transformers import pipeline
+
+# Create the sentiment classifier
+classifier = pipeline("sentiment-analysis")
+
+# Your example texts (fixed typos and quotes)
+texts = [
+    "Port Harcourt community needs better flood protection.",
+    "Nigeria's renewable energy projects are promising!",
+    "Improving education access is a global priority."
+]
+
+# Run analysis and print results
+for text in texts:
+    result = classifier(text)[0]
+    print(f"Text: {text}")
+    print(f"Sentiment: {result['label']} (score: {result['score']:.2f})\n")
